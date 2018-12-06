@@ -1,0 +1,19 @@
+<form method="post" action="/cut_link">
+    <label>
+        Введите название ссылки:
+        <input type="text" name="link_name">
+    </label><br>
+    <label>
+        Введите ссылку для сокращения:
+        <input type="text" name="link">
+    </label><br>
+    <input type="submit" value="Сократить ссылку">
+</form>
+<br>
+<br>
+{% for link in links %}
+    {{ link.link_name }} -
+    <a href="link/{{ link.shorter_link }}">
+        localhost:5000/link/{{ link.shorter_link }}
+    </a>
+{% endfor %}
