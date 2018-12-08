@@ -1,19 +1,51 @@
-<form method="post" action="/cut_link">
-    <label>
-        Введите название ссылки:
-        <input type="text" name="link_name">
-    </label><br>
-    <label>
-        Введите ссылку для сокращения:
-        <input type="text" name="link">
-    </label><br>
-    <input type="submit" value="Сократить ссылку">
-</form>
-<br>
-<br>
-{% for link in links %}
-    {{ link.link_name }} -
-    <a href="link/{{ link.shorter_link }}">
-        localhost:5000/link/{{ link.shorter_link }}
-    </a>
-{% endfor %}
+{% extends "base_template.html" %}
+{% block main_block %}
+<!-- Header -->
+<div class="row">
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+		<div class="col-1"></div>
+		<!-- Brand -->
+		<div class="col-2">
+			<a class="navbar-brand" href="#">Banan</a>
+		</div>
+		<!-- Links -->
+		<div class="col-8">
+			<ul class="navbar-nav">
+				<div class="col">
+					<li class="nav-item">
+						<a class="nav-link" href="#">Главная</a>
+					</li>
+				</div>
+				<div class="col">
+					<li class="nav-item">
+						<a class="nav-link" href="#">Доска заказов</a>
+					</li>
+				</div>
+				<!-- Dropdown -->
+				<div class="col">
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+							{{ user.name }}
+						</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="#">Мой профиль</a>
+						<a class="dropdown-item" href="#">Выйти</a>
+					</div>
+					</li>
+				</div>
+			</ul>
+		</div>
+	</nav>
+</div>
+<div class="container-fluid" style="margin-top:80px">
+	<!-- Menu -->
+	{% block menu %} 
+		<p>It is main page</p>
+	{% endblock %}
+	<!-- main_content -->
+	{% block main_content %} 
+		<p>It is main page</p>
+	{% endblock %}
+</div>
+
+{% endblock %}
